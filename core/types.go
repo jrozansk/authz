@@ -1,6 +1,10 @@
 package core
 
 var (
+	// ACtionSecretList describes https://docs.docker.com/engine/api/v1.37/#operation/SecretList
+	ActionSecretList = "secret_list"
+	// ActionSecretInspect describes https://docs.docker.com/engine/api/v1.37/#operation/SecretInspect
+	ActionSecretInspect = "secret_inspect"
 	// ActionContainerArchive describes https://docs.docker.com/engine/reference/api/docker_remote_api_v1.21/#get-an-archive-of-a-filesystem-resource-in-a-container
 	ActionContainerArchive = "container_archive"
 	// ActionContainerArchiveExtract describes https://docs.docker.com/engine/reference/api/docker_remote_api_v1.21/#extract-an-archive-of-files-or-folders-to-a-directory-in-a-container

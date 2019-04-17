@@ -1,16 +1,14 @@
-IMAGE_NAME ?= docker.io/twistlock/authz-broker
 PACKAGES=$(shell go list ./...)
 VERSION ?= v1.0.0
 IMAGE_VERSION ?= $(VERSION)
 
-.PHONY: all binary test image vet lint clean
+.PHONY: all binary test vet lint clean
 
 SRCS = $(shell git ls-files '*.go' | grep -v '^vendor/')
 
 default: binary
 
-all: image
-	docker build .
+all: binary
 
 fmt:
 	gofmt -w $(SRCS)
@@ -21,9 +19,6 @@ vet:
 lint:
 	@ go get -v github.com/golang/lint/golint
 	$(foreach file,$(SRCS),golint $(file) || exit;)
-
-image: test
-	docker build -t ${IMAGE_NAME}:${IMAGE_VERSION} .
 
 binary: lint fmt vet
 	mkdir -p bin/

@@ -16,11 +16,15 @@ var routes = []route{
 	// https://docs.docker.com/reference/api/docker_remote_api_v1.20/#create-a-new-image-from-a-container-s-changes
 	{pattern: "/commit", method: "POST", action: ActionContainerCommit},
 	// https://docs.docker.com/reference/api/docker_remote_api_v1.20/#monitor-docker-s-events
-	{pattern: "/events", method: "POST", action: ActionDockerEvents},
+	{pattern: "/events", method: "GET", action: ActionDockerEvents},
 	// https://docs.docker.com/reference/api/docker_remote_api_v1.20/#show-the-docker-version-information
 	{pattern: "/version", method: "GET", action: ActionDockerVersion},
 	// https://docs.docker.com/reference/api/docker_remote_api_v1.20/#check-auth-configuration
 	{pattern: "/auth", method: "POST", action: ActionDockerCheckAuth},
+	// https://docs.docker.com/engine/api/v1.37/#operation/SecretList
+	{pattern: "/secrets", method: "GET", action: ActionSecretList},
+	// https://docs.docker.com/engine/api/v1.37/#operation/SecretInspect
+	{pattern: "/secrets/.+", method: "GET", action: ActionSecretInspect},
 	// https://docs.docker.com/reference/api/docker_remote_api_v1.21/#wait-a-container
 	{pattern: "/containers/.+/wait", method: "POST", action: ActionContainerWait},
 	// https://docs.docker.com/reference/api/docker_remote_api_v1.21/#resize-a-container-tty
